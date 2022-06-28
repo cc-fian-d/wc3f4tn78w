@@ -4,7 +4,10 @@ import java.io.Serializable;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 /**
  * Nach JavaBean Konventionen
@@ -41,6 +44,9 @@ public class Huhn implements Serializable {
 	 * Attribute
 	 */
 	private String federfarbe;
+	
+	@Max(value = 5)
+	@Min(value = 1)
 	private int alter;
 	private String ohrenFarbe;
 
@@ -78,9 +84,9 @@ public class Huhn implements Serializable {
 	 * einen leeren Parameterlosen Konstruktor dazu. (Impiliziter Konstruktor)
 	 */
 	public Huhn() {
-		this.setFederfarbe("weiss");
-		this.setAlter(ThreadLocalRandom.current().nextInt());
-		this.setOhrenFarbe("orange");
+//		this.setFederfarbe("weiss");
+//		this.setAlter(ThreadLocalRandom.current().nextInt());
+//		this.setOhrenFarbe("orange");
 	}
 
 	/**
@@ -126,28 +132,28 @@ public class Huhn implements Serializable {
 		return result;
 	}
 
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() != obj.getClass())
-//			return false;
-//		Huhn other = (Huhn) obj;
-//		if (alter != other.alter)
-//			return false;
-//		if (federfarbe == null) {
-//			if (other.federfarbe != null)
-//				return false;
-//		} else if (!federfarbe.equals(other.federfarbe))
-//			return false;
-//		if (ohrenFarbe == null) {
-//			if (other.ohrenFarbe != null)
-//				return false;
-//		} else if (!ohrenFarbe.equals(other.ohrenFarbe))
-//			return false;
-//		return true;
-//	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Huhn other = (Huhn) obj;
+		if (alter != other.alter)
+			return false;
+		if (federfarbe == null) {
+			if (other.federfarbe != null)
+				return false;
+		} else if (!federfarbe.equals(other.federfarbe))
+			return false;
+		if (ohrenFarbe == null) {
+			if (other.ohrenFarbe != null)
+				return false;
+		} else if (!ohrenFarbe.equals(other.ohrenFarbe))
+			return false;
+		return true;
+	}
 
 }

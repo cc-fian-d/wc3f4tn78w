@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body>
+
+	<h:form>
+		<h:messages />
+		<h:outputLabel for="hf" value="Federfarbe" /><h:inputText id="hf" value="#{huhn.federfarbe}"/><br />
+		<h:outputLabel for="ha" value="Alter" />
+		<h:inputText id="ha" value="#{huhn.alter}" />
+		
+		
+		<br />
+		<h:outputLabel for="ho" value="Ohrenfarbe" /><h:inputText id="ho" value="#{huhn.ohrenFarbe}"/><br />
+		<h:commandButton value="Absenden" />
+	</h:form>
+	
+</body> 
+</html>

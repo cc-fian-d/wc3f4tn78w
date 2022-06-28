@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+
+	<h1>Benutzer Seite</h1>
+
+	#{benutzer}
+
+	<h:form>
+	<h:messages />
+	<h:outputText value="Vorname" /><h:inputText value="#{benutzer.vorname}" /><br />
+	<h:outputText value="Nachname" /><h:inputText value="#{benutzer.nachname}" /><br />
+	<h:outputText value="Email" /><h:inputText value="#{benutzer.email}" /> <br />
+	<h:outputText value="Password" /><h:inputSecret value="#{benutzer.password}" /><br />
+	
+	<h:commandButton value="Login" />
+	</h:form>
+</body> 
+</html>
