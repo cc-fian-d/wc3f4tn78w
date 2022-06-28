@@ -36,21 +36,19 @@ public class Auto implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private String hersteller;//null
-	private String fahrzeugnummer;//null
-	
+	private String hersteller;// null
+	private String fahrzeugnummer;// null
+
 	@Inject
-	private Reifen reifen;//CDI soll für mich das Objekt verwalten/erstellen
-	
+	private Reifen reifen;// CDI soll für mich das Objekt verwalten/erstellen
+
 	@Inject
-	private Motor motor;//CDI soll für mich das Objekt verwalten/erstellen
+	private Motor motor;// CDI soll für mich das Objekt verwalten/erstellen
 
 	public Auto() {
-		
+
 	}
-	
-	
-	
+
 	public Auto(String hersteller, String fahrzeugnummer, Reifen reifen, Motor motor) {
 		super();
 		this.hersteller = hersteller;
@@ -58,8 +56,6 @@ public class Auto implements Serializable {
 		this.reifen = reifen;
 		this.motor = motor;
 	}
-
-
 
 	public String getHersteller() {
 		return hersteller;
@@ -146,7 +142,5 @@ public class Auto implements Serializable {
 	public Auto clone() {
 		return new Auto(this.getHersteller(), this.getFahrzeugnummer(), this.getReifen(), this.getMotor());
 	}
-	
-	
 
 }
