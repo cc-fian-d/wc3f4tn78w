@@ -46,7 +46,7 @@ public class AutoService implements Serializable {
 		System.out.println(auto.getClass());
 		System.out.println(auto + " createAuto");
 //		inventoryService.addAuto(auto.clone());
-		createEvent.fire(auto.clone());//Achtung. Wenn CDI dann wird das Proxy-Objekt weitergeleitet
+		createEvent.fire(auto);//Achtung. Wenn CDI dann wird das Proxy-Objekt weitergeleitet
 	}
 
 //	public void createBenziner(Auto auto) {
@@ -54,7 +54,7 @@ public class AutoService implements Serializable {
 		System.out.println(auto.getClass());
 		System.out.println(auto + " createBenziner");
 //		inventoryService.addAuto(auto.clone());
-		createEvent.fire(auto.clone());
+		createEvent.fire(auto);
 	}
 
 //	public void createDiesel(Auto auto) {
@@ -63,7 +63,7 @@ public class AutoService implements Serializable {
 		System.out.println(auto.getClass());
 		System.out.println(auto + " createDiesel");
 //		inventoryService.addAuto(auto.clone());
-		createEvent.fire(auto.clone());
+		createEvent.fire(auto);
 	}
 
 }
