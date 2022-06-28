@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Observes;
 import javax.inject.Named;
 
 import model.Auto;
@@ -26,7 +27,7 @@ public class InventoryService {
 		autos = new ArrayList<Auto>();
 	}
 	
-	public void addAuto(Auto auto) {
+	public void addAuto(@Observes @Inventory Auto auto) {
 		System.out.println("Auto wird eingelagert");
 		autos.add(auto);
 	}

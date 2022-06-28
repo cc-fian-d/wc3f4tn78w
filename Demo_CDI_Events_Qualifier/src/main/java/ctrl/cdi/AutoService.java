@@ -3,6 +3,7 @@ package ctrl.cdi;
 import java.io.Serializable;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -18,37 +19,51 @@ import model.Reifen;
  */
 @ApplicationScoped
 @Named("autoservice")
-public class AutoService implements Serializable{
+public class AutoService implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2753246121074809744L;
 
+	@Inject
+	private Auto auto;// WeldClientProxy
+
 //	@Inject
-//	private Auto auto;
+//	private InventoryService inventoryService;
 	
 	@Inject
-	private InventoryService inventoryService;
+	@Added
+	@Inventory
+	private Event<Auto> createEvent;
 	
-	public void createAuto(Auto auto) {
+	@Inject
+	@Removed
+	private Event<Auto> removeEvent;
+
+//	public void createAuto(Auto auto) {
+	public void createAuto() {// Weil mit CDI und Proxy Object wird auf die Clone Methode gesetzt
 		System.out.println(auto.getClass());
 		System.out.println(auto + " createAuto");
-		inventoryService.addAuto(auto);
+//		inventoryService.addAuto(auto.clone());
+		createEvent.fire(auto.clone());//Achtung. Wenn CDI dann wird das Proxy-Objekt weitergeleitet
 	}
-	
-	public void createBenziner(Auto auto) {
+
+//	public void createBenziner(Auto auto) {
+	public void createBenziner() {// Weil mit CDI und Proxy Object wird auf die Clone Methode gesetzt
 		System.out.println(auto.getClass());
 		System.out.println(auto + " createBenziner");
-		inventoryService.addAuto(auto);
+//		inventoryService.addAuto(auto.clone());
+		createEvent.fire(auto.clone());
 	}
-	
-	public void createDiesel(Auto auto) {
+
+//	public void createDiesel(Auto auto) {
+	public void createDiesel() {// Weil mit CDI und Proxy Object wird auf die Clone Methode gesetzt
 		auto.setMotor(new DieselMotor());
 		System.out.println(auto.getClass());
 		System.out.println(auto + " createDiesel");
-		inventoryService.addAuto(auto);
+//		inventoryService.addAuto(auto.clone());
+		createEvent.fire(auto.clone());
 	}
-	
 
 }
