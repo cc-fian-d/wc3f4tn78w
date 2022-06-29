@@ -23,6 +23,28 @@
 			<h:outputText value="#{item.nachname}" />
 		</h:column>
 	</h:dataTable>
+	
+	<hr />
+	<h:dataTable value="#{benutzerservice.findBenutzerByVorname()}" var="item">
+
+		<h:column>
+			<h:outputText value="#{item.vorname}" />
+		</h:column>
+		<h:column>
+			<h:outputText value="#{item.nachname}" />
+		</h:column>
+	</h:dataTable>
+	
+		<hr />
+	<h:dataTable value="#{benutzerservice.findBenutzerByNachname()}" var="item">
+
+		<h:column>
+			<h:outputText value="#{item.vorname}" />
+		</h:column>
+		<h:column>
+			<h:outputText value="#{item.nachname}" />
+		</h:column>
+	</h:dataTable>
 
 </body>
 </html>
