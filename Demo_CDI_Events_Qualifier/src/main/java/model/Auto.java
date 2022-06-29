@@ -8,6 +8,9 @@ import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import ctrl.cdi.Added;
+
+
 /**
  * 
  * @RequestScoped An eine Anfrage gebunden
@@ -29,6 +32,8 @@ import javax.inject.Named;
 //@SessionScoped
 @RequestScoped
 @Named("auto")
+@Default
+@Added
 public class Auto implements Serializable {
 
 	/**

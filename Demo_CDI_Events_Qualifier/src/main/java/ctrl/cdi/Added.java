@@ -14,7 +14,7 @@ import javax.inject.Qualifier;
 @Qualifier
 @Documented
 @Retention(RUNTIME)
-@Target({ FIELD, ElementType.PARAMETER })
+@Target({ FIELD, ElementType.PARAMETER, ElementType.TYPE })
 public @interface Added {
 
 }
