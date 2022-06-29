@@ -11,11 +11,18 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Audioequipment.findAll", query="SELECT a FROM Audioequipment a")
+@IdClass(AudioequipmentPK.class)
 public class Audioequipment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private AudioequipmentPK id;
+//	@EmbeddedId
+//	private AudioequipmentPK id;
+	
+	@Id
+	private String hersteller;
+
+	@Id
+	private String typbezeichnung;
 
 	private double preis;
 
@@ -26,13 +33,13 @@ public class Audioequipment implements Serializable {
 	public Audioequipment() {
 	}
 
-	public AudioequipmentPK getId() {
-		return this.id;
-	}
+//	public AudioequipmentPK getId() {
+//		return this.id;
+//	}
 
-	public void setId(AudioequipmentPK id) {
-		this.id = id;
-	}
+//	public void setId(AudioequipmentPK id) {
+//		this.id = id;
+//	}
 
 	public double getPreis() {
 		return this.preis;

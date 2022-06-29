@@ -7,11 +7,12 @@ import javax.persistence.*;
  * The primary key class for the audioequipment database table.
  * 
  */
-@Embeddable
+//@Embeddable
 public class AudioequipmentPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
+	
 	private String hersteller;
 
 	private String typbezeichnung;
