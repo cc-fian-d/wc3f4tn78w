@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ctrl.AutorService;
+import ctrl.cdicontainer.AutorService;
 import model.Autor;
 
 /**

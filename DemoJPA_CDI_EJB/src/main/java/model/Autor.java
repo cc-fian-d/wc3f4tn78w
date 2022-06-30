@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import java.util.ArrayList;
@@ -18,6 +21,7 @@ import java.util.List;
 @NamedQuery(name = Autor.QUERY_FIND_BY_ID_FETCH_BUCH
 			, query = "SELECT a FROM Autor a JOIN FETCH a.buecher b WHERE a.id=:" + Autor.PARAMETER_FIND_BY_ID)
 @XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Autor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -29,12 +33,14 @@ public class Autor implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@XmlAttribute
 	private String nachname;
 
+	@XmlAttribute
 	private String vorname;
 
 	// bi-directional many-to-one association to Buch
-	@OneToMany(mappedBy = "autorBean", cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "autorBean", cascade = { CascadeType.PERSIST })
 	private List<Buch> buecher;
 
 	public Autor() {

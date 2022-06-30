@@ -5,10 +5,11 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import ctrl.AutorService;
+import ctrl.cdicontainer.AutorService;
 import model.Autor;
 
 /**
@@ -52,12 +53,11 @@ public class BeispielRestService {
 		return "success";
 	}
 	
-	@POST
-	@Path("readautor")
+	@GET
+	@Path("readautor/{index}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-	public Autor readAutor() {
-		return new Autor("Teste","RestApiService");
-
+	public Autor readAutor(@PathParam("index") int idx) {
+		return as.findAutor(idx);
 	}
 	
 }

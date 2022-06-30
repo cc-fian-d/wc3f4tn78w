@@ -1,4 +1,4 @@
-package ctrl;
+package ctrl.cdicontainer;
 
 import javax.annotation.Resource;
 import javax.enterprise.context.ApplicationScoped;
@@ -91,6 +91,11 @@ public class AutorService {
 			e.printStackTrace();
 		}
 
-		
+	}
+	
+	public Autor findAutor(int idx) {
+		Autor a = em.find(Autor.class, idx);
+		a.getBuecher().forEach(b -> b.setAutorBean(null));
+		return a;
 	}
 }

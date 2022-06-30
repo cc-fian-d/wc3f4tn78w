@@ -25,7 +25,7 @@ public class Buch implements Serializable {
 	private String titel;
 
 	// bi-directional many-to-one association to Autor
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "autor")
 	private Autor autorBean;
 
