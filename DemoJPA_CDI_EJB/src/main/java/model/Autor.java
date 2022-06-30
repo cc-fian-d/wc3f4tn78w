@@ -25,7 +25,7 @@ public class Autor implements Serializable {
 	private String vorname;
 
 	//bi-directional many-to-one association to Buch
-	@OneToMany(mappedBy="autorBean",cascade = {CascadeType.ALL})
+	@OneToMany(mappedBy="autorBean",cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
 	private List<Buch> buecher;
 
 	public Autor() {
