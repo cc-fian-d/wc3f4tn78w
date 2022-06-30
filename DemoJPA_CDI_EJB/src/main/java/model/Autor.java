@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 			, query = "SELECT a FROM Autor a WHERE a.id=:" + Autor.PARAMETER_FIND_BY_ID)
 @NamedQuery(name = Autor.QUERY_FIND_BY_ID_FETCH_BUCH
 			, query = "SELECT a FROM Autor a JOIN FETCH a.buecher b WHERE a.id=:" + Autor.PARAMETER_FIND_BY_ID)
+@XmlRootElement
 public class Autor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
