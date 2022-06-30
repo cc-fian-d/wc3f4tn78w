@@ -48,29 +48,32 @@ public class WriteWithJPA extends HttpServlet {
 		/**
 		 * Verknüpfen von Autor und Buch
 		 */
-//		a.addBuecher(b1);
-//		a.addBuecher(b2);
-//		a.addBuecher(b3);
-//		a.addBuecher(b4);
-//		a.addBuecher(b5);
+		a1.addBuecher(b1);
+		a1.addBuecher(b2);
+		a1.addBuecher(b3);
+		
+		a2.addBuecher(b4);
+		a2.addBuecher(b5);
 
 		try {
 			ut.begin();
 			
-			em.persist(a1);
-			em.persist(a2);
-			
-			a1.addBuecher(b1);
-			a1.addBuecher(b2);
-			a1.addBuecher(b3);
-			a1.addBuecher(b4);
-			a1.addBuecher(b5);
-
 			em.persist(b1);
-			em.persist(b2);
-			em.persist(b3);
-			em.persist(b4);
-			em.persist(b5);
+			
+//			em.persist(a1);
+//			em.persist(a2);
+			
+//			a1.addBuecher(b1);
+//			a1.addBuecher(b2);
+//			a1.addBuecher(b3);
+//			a1.addBuecher(b4);
+//			a1.addBuecher(b5);
+
+//			em.persist(b1);
+//			em.persist(b2);
+//			em.persist(b3);
+//			em.persist(b4);
+//			em.persist(b5);
 
 			ut.commit();
 		} catch (Exception e) {
