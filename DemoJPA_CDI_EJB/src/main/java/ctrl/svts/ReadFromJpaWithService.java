@@ -22,24 +22,40 @@ public class ReadFromJpaWithService extends HttpServlet {
 
 	@Inject
 	AutorService as;
-	
+
 	@Override
 	public void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		PrintWriter out = resp.getWriter();
-		
-		Autor a = as.holeAutor();
-		
 		htmlOpen(out);
-		
+		Autor a;
+		a = as.holeAutor(true);
+		out.println("as.holeAutor(true)<br/>");
 		out.println(a.getVorname());
 		out.println(a.getNachname());
 		out.println(a.getBuecher());
-			
+		out.println("<br/><br/>");
+		a = as.holeAutorMitNamedQuery();
+		out.println("as.holeAutorMitNamedQuery(2)<br/>");
+		out.println(a.getVorname());
+		out.println(a.getNachname());
+		out.println(a.getBuecher());
+		out.println("<br/><br/>");
+		a = as.holeAutor(false);
+		out.println("as.holeAutor(false)<br/>");
+		out.println(a.getVorname());
+		out.println(a.getNachname());
+		out.println(a.getBuecher());
+		out.println("<br/><br/>");
+//		a = as.holeAutorMitNamedQueryFetchBuch();
+//		out.println("as.holeAutorMitNamedQueryFetchBuch()<br/>");
+//		out.println(a.getVorname());
+//		out.println(a.getNachname());
+//		out.println(a.getBuecher());
+
 		htmlClose(out);
 	}
 
-	
 	/**
 	 * Hilfsmethode zum erzeugen der Statischen HTML Elemente
 	 */
@@ -48,11 +64,7 @@ public class ReadFromJpaWithService extends HttpServlet {
 		out.write("<html>");
 		out.write("<head>");
 		out.write("<meta charset=\"ISO-8859-1\">");
-		out.write("<style>\r\n"
-				+ "h1 {color:red;}"
-				+ "h2 {color:orange;}"
-				+ "h3 {color:steelblue;}"
-				+ "</style>");
+		out.write("<style>\r\n" + "h1 {color:red;}" + "h2 {color:orange;}" + "h3 {color:steelblue;}" + "</style>");
 		out.write("<title>Unser Servlet</title>");
 		out.write("</head>");
 		out.write("<body>");
@@ -68,5 +80,5 @@ public class ReadFromJpaWithService extends HttpServlet {
 		out.write("</html>");
 		out.flush();
 	}
-	
+
 }

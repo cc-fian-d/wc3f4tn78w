@@ -59,6 +59,7 @@ public class WriteWithJPA extends HttpServlet {
 			ut.begin();
 			
 			em.persist(b1);
+			em.persist(b4);
 			
 //			em.persist(a1);
 //			em.persist(a2);
