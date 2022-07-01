@@ -10,6 +10,7 @@ import javax.transaction.HeuristicRollbackException;
 import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
+import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
 
 import model.Autor;
@@ -29,12 +30,13 @@ public class AutorService {
 
 	/**
 	 * Lazy Loading Autor
+	 * 
 	 * @return
 	 */
 	public Autor holeAutor() {
 		return holeAutor(false);
 	}
-	
+
 	/**
 	 * 
 	 * @param eager gibt an ob die Bücher auch geladen werden sollen.
@@ -49,21 +51,21 @@ public class AutorService {
 
 		return a;
 	}
-	
+
 	public Autor holeAutorMitNamedQuery() {
-		Autor a = em.createNamedQuery(Autor.QUERY_FIND_BY_ID, Autor.class)
-				.setParameter(Autor.PARAMETER_FIND_BY_ID, 2).getSingleResult();
+		Autor a = em.createNamedQuery(Autor.QUERY_FIND_BY_ID, Autor.class).setParameter(Autor.PARAMETER_FIND_BY_ID, 2)
+				.getSingleResult();
 		return a;
 	}
-	
+
 	public Autor holeAutorMitNamedQueryFetchBuch() {
 		Autor a = em.createNamedQuery(Autor.QUERY_FIND_BY_ID_FETCH_BUCH, Autor.class)
 				.setParameter(Autor.PARAMETER_FIND_BY_ID, 1).getSingleResult();
 		return a;
 	}
-	
+
 	public void persistAutor(Autor autor) {
-		
+
 		try {
 			ut.begin();
 			em.persist(autor);
@@ -92,10 +94,21 @@ public class AutorService {
 		}
 
 	}
-	
+
 	public Autor findAutor(int idx) {
-		Autor a = em.find(Autor.class, idx);
+		Autor a = null;
+
+		try {
+			ut.begin();
+			a = em.find(Autor.class, idx);
+			a.getBuecher().size();
+			ut.commit();
+		} catch (Exception e) {
+
+		}
+
 		a.getBuecher().forEach(b -> b.setAutorBean(null));
+
 		return a;
 	}
 }

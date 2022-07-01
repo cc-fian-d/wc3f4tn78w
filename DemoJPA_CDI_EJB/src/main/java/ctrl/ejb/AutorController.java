@@ -8,6 +8,8 @@ import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
 import model.Autor;
 
@@ -16,6 +18,7 @@ import model.Autor;
 //@Stateful
 @TransactionManagement(TransactionManagementType.CONTAINER)
 @Startup
+@Transactional(value = TxType.REQUIRED)
 public class AutorController implements Serializable {
 
 	@PersistenceContext
@@ -29,7 +32,10 @@ public class AutorController implements Serializable {
 		em.persist(autor);
 	}
 	
+	@Transactional(value = TxType.REQUIRED)
 	public Autor findAutor(int idx) {
-		return em.find(Autor.class, idx);
+		Autor a = em.find(Autor.class, idx);
+		a.getBuecher().size();
+		return a;
 	}
 }

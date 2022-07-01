@@ -1,6 +1,5 @@
 package ctrl.ws.rest.srv;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -17,8 +16,8 @@ import model.Autor;
 //@Stateless
 public class BeispielRestServiceEJB {
 
-	//@EJB
-	@Inject
+//	@EJB
+	@Inject//DIES IST CDI
 	private AutorController ac;
 	
 	@POST
@@ -33,7 +32,9 @@ public class BeispielRestServiceEJB {
 	@Path("readautor/{index}")
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
 	public Autor readAutor(@PathParam("index") int idx) {
-		return ac.findAutor(idx);
+		Autor a = ac.findAutor(idx);
+		a.getBuecher().forEach(b->b.setAutorBean(null));
+		return a;
 	}
 	
 }
