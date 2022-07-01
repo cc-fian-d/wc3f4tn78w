@@ -1,8 +1,11 @@
 package ctrl;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.ejb.Stateless;
+import javax.annotation.PostConstruct;
+import javax.ejb.Stateful;
 
 import model.Book;
 
@@ -10,24 +13,39 @@ import model.Book;
  * Session Bean implementation class BookManagerBean
  */
 @SuppressWarnings("serial")
-@Stateless
-public class BookManagerBean implements BookManagerLocal , Serializable{
+@Stateful
+public class BookManagerBean implements BookManager, BookManagerLocal , Serializable{
 
+	private List<Book> books;
+	
+	
     /**
      * Default constructor. 
      */
     public BookManagerBean() {
-        // TODO Auto-generated constructor stub
+
     }
 
 	@Override
 	public void persistBook(Book book) {
-		
+		System.out.println(book);
 	}
 
 	@Override
 	public Book readBook(int index) {
-		return null;
+		System.out.println(index);
+		Book b = new Book();
+		b.setName("Java");
+		b.setTitle("Insel");
+		return b;
+	}
+	
+	@PostConstruct
+	private void initialize() {
+		books = new ArrayList<Book>();
+		books.add(new Book());
+		books.add(new Book());
+		books.add(new Book());
 	}
 
 }

@@ -18,7 +18,7 @@ import model.Autor;
 //@Stateful
 @TransactionManagement(TransactionManagementType.CONTAINER)
 @Startup
-@Transactional(value = TxType.REQUIRED)
+//@Transactional(value = TxType.REQUIRED)
 public class AutorController implements Serializable {
 
 	@PersistenceContext
@@ -32,7 +32,7 @@ public class AutorController implements Serializable {
 		em.persist(autor);
 	}
 	
-	@Transactional(value = TxType.REQUIRED)
+	//@Transactional(value = TxType.REQUIRED)
 	public Autor findAutor(int idx) {
 		Autor a = em.find(Autor.class, idx);
 		a.getBuecher().size();
